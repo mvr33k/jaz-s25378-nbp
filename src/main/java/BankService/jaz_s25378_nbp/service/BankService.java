@@ -12,7 +12,7 @@ public class BankService {
     public BankService(){}
 
     public CurRate getAverageRate(String currency, LocalDate startDate, LocalDate endDate){
-    
+
         RestTemplate restTemplate=new RestTemplate();
         return restTemplate.getForObject("https://api.nbp.pl/api/exchangerates/rates/a/" + currency + "/" + startDate + "/" + endDate, CurRate.class);
     }

@@ -26,12 +26,12 @@ public class BankController {
 
     @Operation(summary = "Oblicz średnią wartość walut w przedziale", description = "Komunikuje się z api nbp i zbiera dane o wartości waluty z x dni, po czym oblicza ich średnią wartość")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Film znaleziono i zwrócono"),
-            @ApiResponse(responseCode = "400", description = "Błędne dane w requescie"),
-            @ApiResponse(responseCode = "404", description = "Brak filmu w bazie"),
-            @ApiResponse(responseCode = "503", description = "Nie można otrzymać prawidłowej odpowiedzi od serwisu" +
-                    ", baza danych lub mikroserwis nie działa")
+            @ApiResponse(responseCode = "200", description = "Operacja została poprawnie wykonana"),
+            @ApiResponse(responseCode = "404", description = "Nieprawidłowo sformułowanych zapytania lub został przekroczony limit"),
+            @ApiResponse(responseCode = "400", description = "Braku danych dla prawidłowo określonego zakresu czasowego")
     })
+
+
     @GetMapping("/{currency}/{startDate}/{endDate}")
     public ResponseEntity<CurRate> getAverageCurRate(@PathVariable String currency,
                                                      @PathVariable LocalDate startDate,
